@@ -4,15 +4,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const fontSizeInput = document.getElementById('fontsize');
   const fontColorInput = document.getElementById('fontcolor');
 
-  // Helper function to set a cookie
   function setCookie(name, value, days) {
     const d = new Date();
     d.setTime(d.getTime() + (days*24*60*60*1000));
     const expires = "expires=" + d.toUTCString();
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
   }
-
-  // Helper function to get a cookie
   function getCookie(name) {
     const nameEQ = name + "=";
     const ca = document.cookie.split(';');
@@ -22,8 +19,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     return null;
   }
-
-  // Load saved preferences
   function loadPreferences() {
     const savedFontSize = getCookie('fontsize');
     const savedFontColor = getCookie('fontcolor');
@@ -38,8 +33,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
       fontColorInput.value = savedFontColor;
     }
   }
-
-  // Save preferences on form submit
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     try {
@@ -57,8 +50,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
       console.error('Error saving preferences:', error);
     }
   });
-
-  // Initialize preferences
   try {
     loadPreferences();
   } catch (error) {
